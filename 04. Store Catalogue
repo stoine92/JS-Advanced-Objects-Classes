@@ -1,0 +1,29 @@
+function solve(input) {
+    let result = {};
+
+    input.forEach(line =>{
+       let [name, price] = line.split(" : ");
+       let letter = name[0];
+       price = Number(price)
+       
+       if(!result[letter]){
+          result[letter] = []
+       }
+       let product = {name, price};
+       result[letter].push(product)
+
+    })
+    
+    let sortedByLetter = Object.entries(result).sort((a, b) => a[0].localeCompare(b[0]))
+    
+    for(let i = 0; i < sortedByLetter.length; i++){
+        console.log(sortedByLetter[i][0]);
+        
+        let sortByName = sortedByLetter[i][1].sort((a, b) => a.name.localeCompare(b.name))
+        sortByName.forEach(product => {
+            console.log(`  ${product.name}: ${product.price}`);
+            
+        })
+        
+    }
+}
