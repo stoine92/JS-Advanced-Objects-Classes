@@ -1,0 +1,15 @@
+function solve(input) {
+   let allItems = []
+   
+    input.forEach(line =>{
+        let [name, level, items] = line.split(" / ");
+        level = Number(level);
+        
+        items = items !== undefined ? items.split(", ") : items = [];
+
+        let obj = {name, level, items}
+        allItems.push(obj)
+    })
+      
+      console.log(JSON.stringify(allItems));
+}
