@@ -1,0 +1,16 @@
+function solve(input) {
+    console.log(`<table>`);
+    input.forEach(line =>{
+        let file = JSON.parse(line);
+        let value = Object.values(file);
+        console.log(`\t<tr>`);
+        
+        value.forEach(v =>{
+            
+            console.log(`\t\t<td>${v}</td>`);
+         })
+         console.log(`\t</tr>`);
+         
+   })
+   console.log(`</table>`);
+}
