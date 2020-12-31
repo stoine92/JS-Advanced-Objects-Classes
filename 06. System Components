@@ -1,0 +1,30 @@
+ function solve(input) {
+    let obj = {};
+    input.forEach(line =>{
+       let [component, compName, subName] = line.split(" | ");
+       
+       if(!obj[component]){
+           obj[component] = {}
+       }
+       if(!obj[component][compName]){
+           obj[component][compName] = [];
+       }
+        obj[component][compName].push(subName)
+    })
+    
+    Object.entries(obj).sort((a, b) => {
+       
+        return   Object.entries(b[1]).length - Object.entries(a[1]).length || a[0].localeCompare(b[0]);
+}).forEach(([system, components]) => {
+    console.log(system);
+    Object.entries(components).sort((curr, next) => {
+        return next[1].length - curr[1].length;
+    }).forEach(([component, subComponent]) => {
+        console.log(`|||${component}`);
+        subComponent.forEach(sub =>{
+            console.log(`||||||${sub}`);
+            
+        })
+    })
+})
+}
