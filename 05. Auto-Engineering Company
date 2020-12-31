@@ -1,0 +1,26 @@
+ function solve(input) {
+    let obj = {};
+    input.forEach(line =>{
+       let [make, type, produced] = line.split(" | ");
+       produced = Number(produced);
+
+        if(!obj[make]){
+            obj[make] = {};
+        }
+        if(!obj[make][type]){
+            obj[make][type] = produced;
+        }else{
+            obj[make][type] += produced;
+        }
+        
+    })
+   
+    Object.entries(obj).forEach(row => {
+        console.log(row[0]);
+        Object.entries(row[1]).forEach(j =>{
+            console.log(`###${j[0]} -> ${j[1]}`);
+            
+        })
+        
+    })
+}
