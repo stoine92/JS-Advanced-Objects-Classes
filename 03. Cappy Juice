@@ -1,0 +1,28 @@
+function solve(input) {
+    let obj = {}
+    let result = {}
+    input.forEach(line =>{
+        let [juice, quantity] = line.split(" => ");
+        quantity = Number(quantity);
+        
+        if(!obj[juice]){
+            obj[juice] = quantity;
+            
+        }else{
+            obj[juice] += quantity;    
+        }
+        if(obj[juice] >= 1000){
+            result[juice] = 0;
+        }
+        
+    })
+    
+    Object.keys(obj).forEach(j =>{
+        if(result[j] !== undefined){
+            result[j] += Math.floor(obj[j] / 1000);
+        }
+        
+    })
+    
+   Object.keys(result).forEach(element => console.log(`${element} => ${result[element]}`));
+  }
